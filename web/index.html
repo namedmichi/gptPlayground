@@ -1,0 +1,68 @@
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Chat-Anwendung</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<div class="header">GPT Playground</div>
+		<div class="main-content">
+			<div class="chat-history">
+				<div class="leftSideContainer">
+					<label for="systemPrompt">System Prompt:</label><br />
+					<textarea name="systemPrompt" id="systemPrompt" class="systemPrompt">
+Du bist ein netter und Hilfreicher KI Assistent</textarea
+					>
+				</div>
+			</div>
+			<div class="chat">
+				<div class="chat-messages">
+					<span class="ai-message"
+						>Hallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo
+						WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo
+						WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo Welt</span
+					>
+					<span class="user-message"
+						>HHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo
+						WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo WeltHallo
+						Welt</span
+					>
+				</div>
+				<div class="chat-bar-container">
+					<textarea name="text" class="input" id="chatInput" placeholder="Nachricht hier eingeben"></textarea>
+				</div>
+			</div>
+			<div class="sidebar">
+				<form class="sidebarSetting" id="sidebarSetting">
+					<h2 style="margin-top: 0">Einstellungen</h2>
+					<label for="modelSelect">Model:</label><br />
+					<select name="modelSelect" id="modelSelect">
+						<option value="gpt-3.5-turbo-1106">GPT-3.5 Turbo</option>
+						<option value="gpt-3.5-turbo">Legacy GPT3.5 Turbo</option>
+						<option value="gpt-4-1106-preview">GPT 4 "Turbo"</option>
+						<option value="gpt-4">Legacy GPT 4</option>
+					</select>
+					<br />
+					<label for="slider">Temperatur: <span id="tempValue">0.50</span></label>
+					<br />
+					<input type="range" id="tempSlider" name="slider" min="0" max="1" step="0.05" value="0.50" />
+
+					<label for="maxTokensInput">Maximale Anzahl an Tokens:</label><br />
+					<input type="number" id="maxTokensInput" name="maxTokensInput" min="1" value="500" max="16385" /><br />
+					<p class="error" id="tokenError">Zu viele Tokens für dieses Model</p>
+					<br />
+
+					<label for="seedInput">Seed (für die Reproduzierbarkeit der Antworten):</label><br />
+					<input type="text" id="seedInput" name="seedInput" /><br />
+				</form>
+				<div class="switchSidebarContainer">
+					<span class="switchSidebar" id="switchSidebar"
+						><img id="switchSidebarImg" src="/images/close_open_arrows.svg" alt="switchSidebar"
+					/></span>
+				</div>
+			</div>
+		</div>
+		<script src="/js/script.js"></script>
+	</body>
+</html>
