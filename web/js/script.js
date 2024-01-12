@@ -19,23 +19,18 @@ function sendMessage() {
 
 	let seed = document.getElementById('seedInput')?.value;
 
-	let previousUserMessages = document.querySelectorAll('.user-message');
-
-	let previousUserMessagesText = [];
-
-	if (previousUserMessages.length > 0) {
-		previousUserMessages.forEach((message) => previousUserMessagesText.push(message.innerText));
-	}
-
-	let previousAiMessages = document.querySelectorAll('.ai-message');
-
-	let previousAiMessagesText = [];
-
-	if (previousAiMessages.length > 1) {
-		previousAiMessages.forEach((message) => previousAiMessagesText.push(message.innerText));
-	}
-
+	let messagesContainer = document.getElementsByClassName('message');
 	// Add the Previous Messages to the messages
+
+	try {
+		for (let i = 0; i < messagesContainer.length; i++) {
+			if (messagesContainer[i].classList.contains('user')) {
+				messages.push({ role: 'user', content: messagesContainer[i].innerText });
+			} else if (messagesContainer[i].classList.contains('assistant')) {
+				messages.push({ role: 'assistant', content: messagesContainer[i].innerText });
+			}
+		}
+	} catch (error) {}
 
 	let data = {
 		messages: messages,
@@ -43,14 +38,51 @@ function sendMessage() {
 		maxTokens: maxTokens,
 		temperature: temperature,
 		seed: seed,
+		stop: null,
+		top_p: null,
+		frequency_penalty: null,
 	};
 
 	document.getElementById('chatInput').value = '';
 
-	let xhr = new XMLHttpRequest();
-	xhr.open('POST', '/api/sendMessage', true);
-	xhr.setRequestHeader('Content-Type', 'application/json');
-	xhr.send(JSON.stringify(data));
+	let messageContainer = document.createElement('span');
+
+	messageContainer.classList.add('message');
+	messageContainer.classList.add('user-message');
+
+	messageContainer.innerText = message;
+
+	let chatContainer = document.getElementById('chatContainer');
+
+	chatContainer.appendChild(messageContainer);
+
+	fetch('http://127.0.0.1:5000/api/chat', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			let message = data.messages[0].content;
+
+			let messageContainer = document.createElement('span');
+
+			messageContainer.classList.add('message');
+			messageContainer.classList.add('ai-message');
+
+			messageContainer.innerText = message;
+
+			let chatContainer = document.getElementById('chatContainer');
+
+			chatContainer.appendChild(messageContainer);
+
+			chatContainer.scrollTop = chatContainer.scrollHeight;
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
 }
 
 function autoExpand(field) {
@@ -141,4 +173,11 @@ function addSettingsEventListener() {
 	slider.oninput = function () {
 		output.textContent = this.value;
 	};
+
+	// Checks if Enter is pressed
+	document.getElementById('chatInput').addEventListener('keyup', function (event) {
+		if (event.key === 'Enter') {
+			sendMessage();
+		}
+	});
 }
