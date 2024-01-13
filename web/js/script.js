@@ -285,7 +285,7 @@ function addMessagesCloseEventListener() {
 			var clickY = event.clientY - messageElement.getBoundingClientRect().top;
 
 			// Überprüfen Sie, ob der Klick in der Nähe der rechten oberen Ecke erfolgt ist
-			var inAfterArea = clickX > messageElement.offsetWidth - 40 && clickY < 40;
+			var inAfterArea = clickX > messageElement.offsetWidth - 1 && clickY < 0;
 
 			// Führen Sie eine Aktion aus, wenn das '::after' Pseudoelement geklickt wurde
 			if (inAfterArea) {
@@ -306,7 +306,7 @@ function addMessagesCloseEventListener() {
 			var clickY = event.clientY - messageElement.getBoundingClientRect().top;
 
 			// Überprüfen Sie, ob der Klick in der Nähe der rechten oberen Ecke erfolgt ist
-			var inAfterArea = clickX > messageElement.offsetWidth - 40 && clickY < 40;
+			var inAfterArea = clickX > messageElement.offsetWidth - 1 && clickY < 0;
 
 			// Führen Sie eine Aktion aus, wenn das '::after' Pseudoelement geklickt wurde
 			if (inAfterArea) {
@@ -619,9 +619,9 @@ function changeNameOfChathistoryInIndexedDb(sessionID, newName) {
 
 function createNewChat() {
 	currentChatHistroyId = generateNewChatHistoryId();
+	newChat = true;
 
 	document.getElementById('chatContainer').innerHTML = '';
-	newChat = true;
 
 	document.getElementById('modelSelect').value = 'gpt-3.5-turbo-1106';
 
