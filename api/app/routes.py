@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = OpenAI(api_key="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")
+client = OpenAI()
 
 # Endpoint for gpt chat
 @app.route("/api/chat", methods=["POST"])
