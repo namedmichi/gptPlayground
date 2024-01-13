@@ -514,3 +514,8 @@ input[type='range']:focus::-webkit-slider-thumb {
 		opacity: 1;
 	}
 }
+
+.quickOptions select,
+.quickOptions button {
+	margin: 5px;
+}
