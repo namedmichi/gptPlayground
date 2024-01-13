@@ -335,13 +335,20 @@ input[type='range']:focus::-webkit-slider-thumb {
 	margin-bottom: 0;
 }
 
-.chathistorysList {
-	list-style: none;
-	padding: 0;
-	font-family: 'Arial', sans-serif;
-	max-width: 300px; /* Maximale Breite der Chat-Historie */
+#chathistorysList {
+	height: 23vh;
+	overflow-y: auto;
 }
-
+#chathistorysList::-webkit-scrollbar {
+	height: 1rem;
+	width: 0.5rem;
+}
+#chathistorysList::-webkit-scrollbar-thumb {
+	background-color: rgba(217, 217, 227, 0.8);
+	border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+	border-radius: 9999px;
+	border-width: 1px;
+}
 /* Jedes Chat-Element */
 .chathistory {
 	background-color: #333;
