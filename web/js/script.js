@@ -432,6 +432,7 @@ function loadChathistoryfromIndexedDb(sessionID) {
 			document.getElementById('topP').value = chathistory.topP || 1.0;
 
 			document.getElementById('chatContainer').scrollTop = document.getElementById('chatContainer').scrollHeight;
+			addMessagesCloseEventListener();
 		};
 
 		transaction.oncomplete = function (event) {
