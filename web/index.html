@@ -62,11 +62,17 @@ Du bist ein netter und Hilfreicher KI Assistent</textarea
 						<option value="gpt-4">Legacy GPT 4</option>
 					</select>
 					<br />
-					<label for="slider">Temperatur: <span id="tempValue">0.50</span></label>
+					<label for="slider" title="Höhere Werte erzeugen 'Kreativere' Antworten"
+						>Temperatur: <span id="tempValue">0.50</span></label
+					>
 					<br />
 					<input type="range" id="tempSlider" name="slider" min="0" max="1" step="0.05" value="0.50" />
 
-					<label for="maxTokensInput">Maximale Anzahl an Tokens:</label><br />
+					<label
+						for="maxTokensInput"
+						title="Die Anzahl der Tokens in der Antwort. Wert sollt immer weniger als das wirkliche maximum sein da die Tokens für den Chatverlauf & Systemprompt mit in die Berechnung fließen"
+						>Maximale Anzahl an Tokens:</label
+					><br />
 					<input type="number" id="maxTokensInput" name="maxTokensInput" min="1" value="1024" max="16385" /><br />
 					<p class="error" id="tokenError">Zu viele Tokens für dieses Model</p>
 					<br />

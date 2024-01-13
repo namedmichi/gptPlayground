@@ -233,7 +233,7 @@ function addSettingsEventListener() {
 		let modelMaxTokens = document.getElementById('maxTokensInput').getAttribute('max');
 
 		if (parseInt(maxTokens) > parseInt(modelMaxTokens)) {
-			document.getElementById('maxTokensInput').value = modelMaxTokens;
+			document.getElementById('maxTokensInput').value = modelMaxTokens - 1024;
 			document.getElementById('tokenError').style.display = 'block';
 		}
 
