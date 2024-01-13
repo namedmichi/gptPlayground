@@ -117,17 +117,16 @@ body {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	height: calc(100vh - 78px); /* Passen Sie [Höhe des Headers] an die tatsächliche Höhe Ihres Headers an */
+	height: calc(100vh - 78px);
 }
 
-/* Stil für den Chat-Nachrichten-Container */
 .chat-messages {
-	flex-grow: 1; /* Ermöglicht, dass dieser Bereich den verfügbaren Platz ausfüllt */
+	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
 	padding-top: 0;
-	overflow-y: auto; /* Verwendet 'auto' für das automatische Einblenden der Scrollbar */
+	overflow-y: auto;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -169,54 +168,53 @@ body {
 	background-image: url('/images/chatbot.png');
 	content: '';
 	position: absolute;
-	left: -50; /* Pseudoelement links ausrichten */
+	left: -50;
 	top: 0;
-	width: 40px; /* Größe des Profilbildes */
-	height: 40px; /* Größe des Profilbildes */
+	width: 40px;
+	height: 40px;
 	background-size: cover;
-	border-radius: 50%; /* Kreisförmiges Profilbild */
+	border-radius: 50%;
 }
 .user-message::before {
 	background-image: url('/images/user.png');
 	content: '';
 	position: absolute;
-	left: -50; /* Pseudoelement links ausrichten */
+	left: -50;
 	top: 0;
-	width: 40px; /* Größe des Profilbildes */
-	height: 40px; /* Größe des Profilbildes */
+	width: 40px;
+	height: 40px;
 	background-size: cover;
-	border-radius: 50%; /* Kreisförmiges Profilbild */
+	border-radius: 50%;
 }
 .user-message::after {
 	content: 'x';
 	position: absolute;
-	right: -10px; /* Pseudoelement rechts ausrichten */
+	right: -10px;
 	top: -25px;
 	background-size: cover;
-	border-radius: 50%; /* Kreisförmiges Profilbild */
+	border-radius: 50%;
 	cursor: pointer;
 }
 .ai-message::after {
 	content: 'x';
 	position: absolute;
-	right: -10px; /* Pseudoelement rechts ausrichten */
+	right: -10px;
 	top: -25px;
 	background-size: cover;
-	border-radius: 50%; /* Kreisförmiges Profilbild */
+	border-radius: 50%;
 	cursor: pointer;
 }
 
 .sidebarSetting {
 	padding: 12px;
 }
-/* Allgemeiner Stil für das Formular */
+
 form {
 	border-radius: 10px;
 	font-family: 'Arial', sans-serif;
 	margin: 20px 0;
 }
 
-/* Stil für die Labels */
 label {
 	margin-bottom: 5px;
 	font-weight: bold;
@@ -224,7 +222,6 @@ label {
 	color: #e2e2e2;
 }
 
-/* Stil für die Select und Input-Elemente */
 select,
 input[type='text'],
 input[type='number'],
@@ -236,12 +233,11 @@ button {
 	color: #e2e2e2;
 	background-color: #1a1a1a;
 	border-radius: 5px;
-	box-sizing: border-box; /* Damit padding und border die Breite nicht ändern */
+	box-sizing: border-box;
 }
 
-/* Stil für den Slider */
 input[type='range'] {
-	-webkit-appearance: none; /* Override für standard styles */
+	-webkit-appearance: none;
 	height: 5px;
 	width: 100%;
 	margin: 0 0 20px 0;
@@ -270,7 +266,6 @@ input[type='range']:focus::-webkit-slider-thumb {
 	background: #004b9f;
 }
 
-/* Stil für den Wert neben dem Slider */
 #tempValue {
 	font-weight: normal;
 	color: #e2e2e2;
@@ -278,7 +273,6 @@ input[type='range']:focus::-webkit-slider-thumb {
 	margin-left: 10px;
 }
 
-/* Responsive Anpassungen */
 @media (max-width: 600px) {
 	form {
 		width: 80%;
@@ -349,48 +343,41 @@ input[type='range']:focus::-webkit-slider-thumb {
 	border-radius: 9999px;
 	border-width: 1px;
 }
-/* Jedes Chat-Element */
+
 .chathistory {
 	background-color: #333;
 	padding: 10px;
 	margin-bottom: 8px;
 	margin: 12px;
 	border-radius: 4px;
-	cursor: pointer; /* Zeiger-Icon beim Drüberfahren */
-	position: relative; /* Für absolute Positionierung des Icons */
+	cursor: pointer;
+	position: relative;
 	display: flex;
 	align-items: center;
 }
 
-/* Stil für das Bleistift-Icon */
 .chat-edit-icon {
 	position: absolute;
-	right: 10px; /* Abstand vom rechten Rand */
+	right: 10px;
 	top: 50%;
-	transform: translateY(-50%); /* Zentriert das Icon vertikal */
+	transform: translateY(-50%);
 	cursor: pointer;
-	/* Nutzen Sie ein passendes Bleistift-Icon aus einer Bibliothek wie FontAwesome oder ähnliches */
-	/* Beispiel: content: url('path_to_pencil_icon.png'); */
 }
 
-/* Hover-Effekt für das gesamte Chat-Element */
 .chathistory li:hover {
 	background-color: #eaeaea;
 }
 
-/* Hover-Effekt speziell für das Icon */
 .chat-edit-icon:hover {
 	opacity: 0.7;
 }
-/* Hinzufügen des Mülltonnen-Icons im CSS */
+
 .chat-delete-icon {
 	position: absolute;
-	right: 30px; /* Abstand vom rechten Rand, neben dem Bleistift-Icon */
+	right: 30px;
 	top: 50%;
 	transform: translateY(-50%);
 	cursor: pointer;
-	/* Nutzen Sie ein passendes Mülltonnen-Icon aus einer Bibliothek oder als Bild */
-	/* Beispiel: content: url('path_to_trash_icon.png'); */
 }
 
 #newChat {

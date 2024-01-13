@@ -583,8 +583,6 @@ function deleteChathistoryFromIndexedDB(sessionID) {
 }
 
 function changeNameOfChathistoryInIndexedDb(sessionID, newName) {
-	//change the Name of the Chathistory in IndexedDb with a sessionID
-
 	//change the Name of the Chathistory in IndexedDb
 	let dbRequest = indexedDB.open('chathistory', 1);
 
@@ -633,8 +631,6 @@ function createNewChat() {
 
 	document.getElementById('maxTokensInput').value = 1024;
 }
-
-// ! TODO: Add Language select with prompting
 
 function regenerateResponse() {
 	let lastElement = document.getElementById('chatContainer').lastChild;
@@ -730,4 +726,7 @@ function regenerateResponse() {
 		.catch((error) => {
 			console.error('Error:', error);
 		});
+
+	// regex to remove all '/*(content)*/'
+	let regex = /\/\*.*\*\//g;
 }
