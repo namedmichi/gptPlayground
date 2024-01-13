@@ -519,13 +519,23 @@ function addChathistoryEventListeners() {
 	var chathistoryElements = document.querySelectorAll('.chathistory');
 
 	chathistoryElements.forEach(function (chathistoryElement) {
+		chathistoryElement.removeEventListener('click', loadChathistorySubFunction);
+		loadChathistorySubFunction(chathistoryElement);
+	});
+
+	function loadChathistorySubFunction(chathistoryElement) {
 		chathistoryElement.addEventListener('click', function (event) {
 			let sessionID = chathistoryElement.getAttribute('sessionID');
 			loadChathistoryfromIndexedDb(sessionID);
 		});
-	}, false);
+	}
 
 	document.querySelectorAll('.chat-edit-icon').forEach(function (icon) {
+		icon.removeEventListener('click', editChatName);
+		editChatName(icon);
+	});
+
+	function editChatName(icon) {
 		icon.addEventListener('click', function (event) {
 			event.stopPropagation();
 			var chatItem = this.parentNode;
@@ -538,9 +548,14 @@ function addChathistoryEventListeners() {
 				chatItem.firstChild.textContent = newName;
 			}
 		});
-	});
+	}
 
 	document.querySelectorAll('.chat-delete-icon').forEach(function (icon) {
+		icon.removeEventListener('click', deleteChathistorySubFunction);
+		deleteChathistorySubFunction(icon);
+	});
+
+	function deleteChathistorySubFunction(icon) {
 		icon.addEventListener('click', function (event) {
 			event.stopPropagation();
 			if (confirm('Möchten Sie diesen Chat wirklich löschen?')) {
@@ -549,7 +564,7 @@ function addChathistoryEventListeners() {
 				this.parentNode.remove();
 			}
 		});
-	});
+	}
 }
 
 function deleteChathistoryFromIndexedDB(sessionID) {
