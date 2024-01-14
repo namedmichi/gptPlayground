@@ -1,5 +1,9 @@
 # Python Backend
 
+## Benötigt
+
+-   Python 3.11
+
 ## Installation
 
 1. (optional) venv erstellen
@@ -28,7 +32,7 @@ python run.py
 
 | Parameter           | Type     | Description                                                                              |
 | :------------------ | :------- | :--------------------------------------------------------------------------------------- |
-| `messages`          | `List`   | **Required**. Liste an Chat Nachrichten                                                  |
+| `messages`          | `List`   | **Erforderlich**. Liste an Chat Nachrichten                                              |
 | `model`             | `String` | **Erforderlich**. Das Modell, das für die API-Anfrage verwendet wird                     |
 | `maxTokens`         | `Int`    | **Erforderlich**. Maximale Anzahl von Tokens, die in der Antwort generiert werden können |
 | `temperature`       | `Float`  | **Erforderlich**. Steuert die Zufälligkeit der Antwort                                   |
