@@ -1,0 +1,48 @@
+name: Count Stats
+on:
+  workflow_dispatch:
+    inputs:
+      manual_trigger:
+        description: 'Manually trigger the stats count'
+        type: bool
+
+jobs:
+  count-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install required tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cloc
+          pip install wc
+
+      - name: Count stats
+        run: |
+          # Count lines, characters, and words for specific file types
+          cloc --exclude-dir=.git --include-lang=JavaScript,HTML,CSS,TypeScript,Python,Java,SCSS,Sass .
+          find . -type f \( -name "*.js" -o -name "*.jsx" -o -name "*.html" -o -name "*.css" -o -name "*.ts" -o -name "*.py" -o -name "*.java" -o -name "*.scss" -o -name "*.sass" \) -exec wc -l -c -w {} + > stats.txt
+
+      - name: Upload stats
+        uses: actions/upload-artifact@v2
+        with:
+          name: stats
+          path: stats.txt
+
+      - name: Check for changes in stats.txt
+        id: check-changes
+        run: |
+          if git diff --exit-code stats.txt; then
+            echo "No changes in stats.txt"
+            exit 0
+          fi
+
+      - name: Commit and push stats.txt
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add stats.txt
+          git commit -m "Update stats.txt"
+          git push

@@ -1,0 +1,7 @@
+   55   111  1408 ./api/app/routes.py
+    7    16   109 ./api/app/__init__.py
+    3     9    71 ./api/run.py
+  111   308  4340 ./web/index.html
+  748  1977 23544 ./web/js/script.js
+  508   981  9074 ./web/css/styles.css
+ 1432  3402 38546 total
